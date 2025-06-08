@@ -249,7 +249,7 @@ fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, title: String
                 if (title == "Recent Transaction") {
                     Text(
                         text = "See All",
-                        fontSize = 16.sp,
+                        fontSize = 18.sp,
                         color = zinc,
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.align(Alignment.CenterEnd)
@@ -264,7 +264,7 @@ fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, title: String
             TransactionItem(
                 title = list[it].title,
                 amount = list[it].amount.toString(),
-                icon = if (list[it].type == "Income") R.drawable.ic_expense else R.drawable.ic_woek,
+                icon = if (list[it].type == "Income") R.drawable.wallet_in else R.drawable.ic_woek,
                 date = Utils.dateFormatter(list[it].date.toLong()),
                 color = if (list[it].type == "Income") Green else Color.Red
             )
