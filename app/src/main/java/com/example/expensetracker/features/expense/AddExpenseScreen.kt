@@ -25,6 +25,7 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -199,15 +200,15 @@ fun DataForm(modifier: Modifier, onAddExpense: (expense: ExpenseEntity) -> Unit)
                 )
             }
         )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = "Category", fontSize = 14.sp, color = zinc,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        CategorySelection(list = listOf("PayPal", "UpWork", "Travel", "Salary"), onItemSelected = {
-            category.value = it
-        })
+//        Spacer(modifier = Modifier.height(16.dp))
+//        Text(
+//            text = "Category", fontSize = 14.sp, color = zinc,
+//            style = MaterialTheme.typography.bodyMedium,
+//            modifier = Modifier.padding(bottom = 8.dp)
+//        )
+//        CategorySelection(list = listOf("PayPal", "UpWork", "Travel", "Salary"), onItemSelected = {
+//            category.value = it
+//        })
 
         Spacer(modifier = Modifier.height(16.dp))
         Text(
@@ -223,7 +224,7 @@ fun DataForm(modifier: Modifier, onAddExpense: (expense: ExpenseEntity) -> Unit)
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
-                .dottedBorder(color = light_gray, strokeWidth = 1.dp, 8.dp, 20f)
+                .dottedBorder(color = zinc, strokeWidth = 1.dp, 8.dp, 20f)
                 .clickable {
                     val expenseEntity = ExpenseEntity(
                         title = name.value,
@@ -302,7 +303,7 @@ fun CategorySelection(list: List<String>, onItemSelected: (item: String) -> Unit
             onValueChange = { selectedItem.value = it },
             modifier = Modifier
                 .fillMaxWidth()
-                .menuAnchor(),
+                .menuAnchor(type = MenuAnchorType.PrimaryNotEditable, true),
             readOnly = true,
             trailingIcon = {
                 ExposedDropdownMenuDefaults.TrailingIcon(expanded = expended.value)

@@ -238,7 +238,7 @@ fun CartItem(modifier: Modifier, balance: String, expense: String, income: Strin
 }
 
 @Composable
-fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, title: String = "Recent Transaction", onSeeAll: () -> Unit = {}) {
+fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, title: String = "Recent Transactions", onSeeAll: () -> Unit = {}) {
     LazyColumn(modifier = modifier.padding(16.dp)) {
         item {
             Box(modifier = Modifier.fillMaxWidth()) {
@@ -246,7 +246,7 @@ fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, title: String
                     text = title, fontSize = 20.sp,
                     style = MaterialTheme.typography.labelMedium,
                 )
-                if (title == "Recent Transaction") {
+                if (title == "Recent Transactions") {
                     Text(
                         text = "See All",
                         fontSize = 18.sp,
@@ -260,11 +260,12 @@ fun TransactionList(modifier: Modifier, list: List<ExpenseEntity>, title: String
                 }
             }
         }
+
         items(list.size) {
             TransactionItem(
                 title = list[it].title,
                 amount = list[it].amount.toString(),
-                icon = if (list[it].type == "Income") R.drawable.wallet_in else R.drawable.ic_woek,
+                icon = if (list[it].type == "Income") R.drawable.wallet_in else R.drawable.wallet_out,
                 date = Utils.dateFormatter(list[it].date.toLong()),
                 color = if (list[it].type == "Income") Green else Color.Red
             )
